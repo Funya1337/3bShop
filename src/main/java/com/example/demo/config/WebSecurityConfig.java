@@ -29,16 +29,16 @@ public class WebSecurityConfig {
 	@Autowired
 	private UserService userService;
 
-	// @Bean
-	// public BCryptPasswordEncoder bCryptPasswordEncoder() {
-	// 	return new BCryptPasswordEncoder();
-	// }
+	@Bean(name = "passwordEncoder")
+	public static BCryptPasswordEncoder bCryptPasswordEncoder() {
+		return new BCryptPasswordEncoder();
+	}
 
 	@Bean
 	public DaoAuthenticationProvider authenticationProvider() {
 		DaoAuthenticationProvider auth = new DaoAuthenticationProvider();
 		auth.setUserDetailsService(userService);
-		auth.setPasswordEncoder(NoOpPasswordEncoder.getInstance());
+		auth.setPasswordEncoder(bCryptPasswordEncoder());
 		return auth;
 	}
 
