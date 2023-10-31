@@ -1,0 +1,161 @@
+<!-- <!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+    <head>
+        <title>Hello World!</title>
+    </head>
+    <body>
+        <h1 th:inline="text">Hello <span th:remove="tag" sec:authentication="name">thymeleaf</span>!</h1>
+        <form th:action="@{/logout}" method="post">
+            <input type="submit" value="Sign Out"/>
+        </form>
+    </body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Shop Homepage - Start Bootstrap Template</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Bootstrap icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/styles.css" rel="stylesheet" />
+    </head>
+    <body>
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container px-4 px-lg-5">
+                <a class="navbar-brand" href="/">3bShop</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="/">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="#">All Products</a></li>
+                                <li><hr class="dropdown-divider" /></li>
+                                <li><a class="dropdown-item" href="#">Popular Items</a></li>
+                                <li><a class="dropdown-item" href="#">New Arrivals</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <form method="GET" action="/cart" class="d-flex">
+                        <button class="btn btn-outline-dark" style="margin-right: 10px" type="submit">
+                            <i class="bi-cart-fill me-1"></i>
+                            Cart
+                            <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+                        </button>
+                    </form>
+                    <form method="GET" action="/profile" class="d-flex">
+                      <button class="btn btn-outline-dark" style="margin-right: 10px" type="submit">
+                          <i class="bi-cart-fill me-1"></i>
+                          Profile
+                      </button>
+                  </form>
+                </div>
+            </div>
+        </nav>
+        <!-- Header-->
+        <header class="bg-dark py-5">
+            <div class="container px-4 px-lg-5 my-5">
+                <div class="text-center text-white">
+                    <h1 class="display-4 fw-bolder">Shop in style</h1>
+                    <p class="lead fw-normal text-white-50 mb-0">With this shop hompeage template</p>
+                </div>
+            </div>
+        </header>
+
+        <!-- Profile View -->
+        <section class="py-5">
+            <div class="container px-4 px-lg-5 mt-5">
+                <div class="row">
+                    <div class="col-sm-6 mb-3 mb-sm-0">
+                      <div class="card">
+                        <div class="card-body">
+                            <h1>View profile</h1>
+                            <form th:action="@{/logout}" method="post">
+                                <div class="form-group">
+                                  <label for="inputEmail">Email address</label>
+                                  <input class="form-control" id="inputEmail" aria-describedby="emailHelp" th:placeholder="${#authentication.getName()}" disabled>
+                                </div>
+                                <!-- <div th:text="${#authentication.getPrincipal()}"></div> -->
+                                <!-- <span th:text ="${#authentication.getPrincipal().getUser().getFirstName()}"></span> -->
+                                <div class="form-group">
+                                  <label for="inputFirstName">First name</label>
+                                  <input class="form-control" id="inputFirstName" th:placeholder="${user.getFirstName()}" disabled>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputLastName">Last name</label>
+                                    <input class="form-control" id="inputLastName" th:placeholder="${user.getLastName()}" disabled>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputRole">User Role</label>
+                                    <input class="form-control" id="inputRole" th:placeholder="${#authentication.getAuthorities()}" disabled>
+                                </div>
+                                <!-- <form th:action="@{/logout}" method="post" class="d-flex">
+                                </form> -->
+                                <!-- <p>First Name: <span th:text="${user.getFirstName()}"></span></p>
+                                <p>Last Name: <span th:text="${user.getLastName()}"></span></p> -->
+                                <br/>
+                                <button class="btn btn-outline-dark" style="margin-right: 10px" type="submit">
+                                    Sign Out
+                                </button>
+                            </form>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="card">
+                        <div class="card-body">
+                            <h1>Edit profile</h1>
+                            <form th:action="@{/profile}" method="post">
+                                <div class="form-group">
+                                  <label for="inputFirstName">First name</label>
+                                  <input class="form-control" th:value="${firstName}" id="inputFirstName">
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputLastName">Last name</label>
+                                    <input class="form-control" th:value="${lastName}" id="inputLastName">
+                                </div>
+                                <br/>
+                                <button class="btn btn-outline-dark" style="margin-right: 10px" type="submit">
+                                    Update
+                                </button>
+                                <button class="btn btn-outline-dark" style="margin-right: 10px" type="reset">
+                                    Reset
+                                </button>
+                            </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+        </section>
+
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        
+        <!-- Footer-->
+        <footer class="py-5 bg-dark">
+            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2023</p></div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+    </body>
+</html>

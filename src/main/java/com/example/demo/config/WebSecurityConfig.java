@@ -63,18 +63,6 @@ public class WebSecurityConfig {
 	return http.build();
 	}
 
-	// @Bean
-	// public UserDetailsService userDetailsService() {
-	// 	UserDetails user =
-	// 		 User.withDefaultPasswordEncoder()
-	// 			.username("user")
-	// 			.password("password")
-	// 			.roles("USER")
-	// 			.build();
-
-	// 	return new InMemoryUserDetailsManager(user);
-	// }
-
 	// protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 	// 	auth.jdbcAuthentication()
 	// 	.dataSource(dataSource)

@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.web;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -8,7 +8,7 @@ import org.springframework.web.server.ResponseStatusException;
 import jakarta.servlet.http.HttpServletRequest;
 
 @Controller
-public class adminPanelController {
+public class AdminPanelController {
     @GetMapping("/adminpanel")
     public String index(HttpServletRequest request) {
         if (request.isUserInRole("ROLE_ADMIN")) {
