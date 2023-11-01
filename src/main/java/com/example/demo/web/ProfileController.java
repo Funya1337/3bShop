@@ -14,6 +14,8 @@ import jakarta.servlet.http.HttpServletRequest;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller
@@ -28,18 +30,38 @@ public class ProfileController {
 
         User user = userRepository.findByEmail(username);
 
+        System.out.println("from db: " + user.getFirstName());
+        System.out.println("from db: " + user.getLastName());
+
         // System.out.println(user.getLastName());
 
         model.addAttribute("user", user);
         return "profile";
     }
 
-    // @PostMapping(value = "/profile")
-    // public String updateProfile(HttpServletRequest request) {
-    //     String firstName = request.getParameter("firstName");
-    //     String lastName = request.getParameter("lastName");
-    //     System.out.println(firstName + " " + lastName);
-    //     return "profile";
-    // }
+    @PostMapping("/profile")
+    public String updateProfile(@RequestParam("firstName") String firstName, @RequestParam("lastName") String lastName, Authentication authentication) {
+        String username = authentication.getName();
+        User user = userRepository.findByEmail(username);
+
+        // System.out.println(user.getFirstName());
+        // System.out.println(user.getLastName());
+
+        user.setFirstName(firstName);
+        user.setLastName(lastName);
+
+        userRepository.save(user);
+        
+        System.out.println(user.getFirstName());
+        System.out.println(user.getLastName());
+
+        // System.out.println(firstName);
+        // System.out.println(lastName);
+        return "redirect:/profile";
+        // String firstName = request.getParameter("firstName");
+        // String lastName = request.getParameter("lastName");
+        // System.out.println(firstName + " " + lastName);
+        // return "profile";
+    }
     
 }

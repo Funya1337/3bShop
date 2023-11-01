@@ -89,6 +89,7 @@ xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
                                 </div>
                                 <!-- <div th:text="${#authentication.getPrincipal()}"></div> -->
                                 <!-- <span th:text ="${#authentication.getPrincipal().getUser().getFirstName()}"></span> -->
+
                                 <div class="form-group">
                                   <label for="inputFirstName">First name</label>
                                   <input class="form-control" id="inputFirstName" th:placeholder="${user.getFirstName()}" disabled>
@@ -101,6 +102,7 @@ xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
                                     <label for="inputRole">User Role</label>
                                     <input class="form-control" id="inputRole" th:placeholder="${#authentication.getAuthorities()}" disabled>
                                 </div>
+                                
                                 <!-- <form th:action="@{/logout}" method="post" class="d-flex">
                                 </form> -->
                                 <!-- <p>First Name: <span th:text="${user.getFirstName()}"></span></p>
@@ -120,11 +122,11 @@ xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
                             <form th:action="@{/profile}" method="post">
                                 <div class="form-group">
                                   <label for="inputFirstName">First name</label>
-                                  <input class="form-control" th:value="${firstName}" id="inputFirstName">
+                                  <input class="form-control" name="firstName" id="firstName">
                                 </div>
                                 <div class="form-group">
                                     <label for="inputLastName">Last name</label>
-                                    <input class="form-control" th:value="${lastName}" id="inputLastName">
+                                    <input class="form-control" name="lastName" id="lastName">
                                 </div>
                                 <br/>
                                 <button class="btn btn-outline-dark" style="margin-right: 10px" type="submit">
