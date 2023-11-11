@@ -7,5 +7,28 @@
 </head>
 <body>
     <h1>Admin panel</h1>
+    <h3>Add product</h3>
+    <form th:action="@{/adminpanel}" th:object="${product}" method="post">
+        <div class="form-group">
+          <label for="inputProductName">Name</label>
+          <input class="form-control" name="productName" id="productName" th:field="*{name}">
+        </div>
+        <div class="form-group">
+            <label for="inputProductPrice">Price</label>
+            <input class="form-control" name="productPrice" id="productPrice" th:field="*{price}">
+        </div>
+        <div class="form-group">
+            <label for="inputProductRate">Rate</label>
+            <input class="form-control" name="productRate" id="productRate" th:field="*{rate}">
+        </div>
+        <div class="form-group">
+            <label for="inputProductAmount">Amount</label>
+            <input class="form-control" name="productAmount" id="productAmount" th:field="*{amount}">
+        </div>  
+        <br/>
+        <button class="btn btn-outline-dark" style="margin-right: 10px" type="submit">
+            Add
+        </button>
+    </form>
 </body>
 </html>
