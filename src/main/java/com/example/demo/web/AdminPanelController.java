@@ -46,6 +46,7 @@ public class AdminPanelController {
         } else {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "entity not found");
         }
+        // return "adminPanel";
     }
 
     @PostMapping
@@ -84,6 +85,5 @@ public class AdminPanelController {
             System.out.println("Can't find product name!");
             return "redirect:/adminpanel?error";
         }
-
     }
 }

@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import com.example.demo.model.Product;
 import com.example.demo.repository.ProductRepository;
 import com.example.demo.web.dto.CreateProductDto;
+import java.util.List;
 
 @Service
 public class ProductServiceImpl implements ProductService {
@@ -35,5 +36,10 @@ public class ProductServiceImpl implements ProductService {
         } else {
             return false;
         }
+    }
+
+    @Override
+    public List<Product> findAll() {
+        return productRepository.findAll();
     }
 }

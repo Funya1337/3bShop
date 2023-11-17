@@ -8,5 +8,4 @@ import com.example.demo.model.Product;
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Long> {
     Product findByName(String name);
-    // Product deleteByName(String name);
 }

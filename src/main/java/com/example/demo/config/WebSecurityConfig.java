@@ -51,6 +51,7 @@ public class WebSecurityConfig {
 	public SecurityFilterChain securityFilterChain(HttpSecurity http, HandlerMappingIntrospector introspector) throws Exception {
 		MvcRequestMatcher.Builder mvcMatcherBuilder = new MvcRequestMatcher.Builder(introspector);
 		http.authorizeHttpRequests((requests) -> requests
+			// .requestMatchers("/adminpanel").hasAuthority("ADMIN")
 			.requestMatchers(mvcMatcherBuilder.pattern("/registration")).permitAll()
 			.anyRequest().authenticated()
 		)
