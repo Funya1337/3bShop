@@ -20,4 +20,20 @@ public class ProductServiceImpl implements ProductService {
         Product product = new Product(createProductDto.getName(), createProductDto.getPrice(), createProductDto.getRate(), createProductDto.getAmount());
         return productRepository.save(product);
     }
+
+    @Override
+    public Product findByName(String name) {
+        return productRepository.findByName(name);
+    }
+
+    @Override
+    public Boolean deleteByName(String name) {
+        Product product = productRepository.findByName(name);
+        if (product != null) {
+            productRepository.delete(product);
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

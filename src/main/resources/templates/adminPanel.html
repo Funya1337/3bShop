@@ -30,5 +30,35 @@
             Add
         </button>
     </form>
+
+    <br/>
+    <br/>
+
+    <h3>Find product</h3>
+    <form th:action="@{/adminpanel/product/find}" th:object="${product}" method="post">
+        <div class="form-group">
+          <label for="inputProductName">Name</label>
+          <input class="form-control" name="productName" id="productName" th:field="*{name}">
+        </div> 
+        <br/>
+        <button class="btn btn-outline-dark" style="margin-right: 10px" type="submit">
+            Find
+        </button>
+    </form>
+
+    <br/>
+    <br/>
+
+    <h3>Delete product</h3>
+    <form th:action="@{/adminpanel/product/delete}" th:object="${product}" method="post">
+        <div class="form-group">
+          <label for="inputProductName">Name</label>
+          <input class="form-control" name="productName" id="productName" th:field="*{name}">
+        </div> 
+        <br/>
+        <button class="btn btn-outline-dark" style="margin-right: 10px" type="submit">
+            Delete
+        </button>
+    </form>
 </body>
 </html>

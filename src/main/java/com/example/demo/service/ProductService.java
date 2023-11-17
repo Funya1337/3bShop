@@ -7,4 +7,6 @@ import com.example.demo.web.dto.CreateProductDto;
 
 public interface ProductService {
     Product save(CreateProductDto createProductDto);
+    Product findByName(String name);
+    Boolean deleteByName(String name);
 }
